@@ -1,0 +1,6 @@
+class Reference
+{
+    public Reference()
+    {
+    }
+}

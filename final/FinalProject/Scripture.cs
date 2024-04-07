@@ -1,0 +1,6 @@
+class Scripture
+{
+    public Scripture()
+    {
+    }
+}

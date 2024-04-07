@@ -1,0 +1,6 @@
+class Word
+{
+    public Word()
+    {
+    }
+}

@@ -30,3 +30,38 @@ public class ChecklistGoal : Goal
     }
 }
 
+
+// Base class
+    class Shape
+    {
+        // Virtual method to calculate area
+        public virtual double CalculateArea()
+        {
+            return 0;
+        }
+    }
+
+    // Derived class Circle
+    class Circle : Shape
+    {
+        public double Radius { get; set; }
+
+        // Override the CalculateArea method for circles
+        public override double CalculateArea()
+        {
+            return Math.PI * Radius * Radius;
+        }
+    }
+
+    // Derived class Rectangle
+    class Rectangle : Shape
+    {
+        public double Width { get; set; }
+        public double Height { get; set; }
+
+        // Override the CalculateArea method for rectangles
+        public override double CalculateArea()
+        {
+            return Width * Height;
+        }
+    }

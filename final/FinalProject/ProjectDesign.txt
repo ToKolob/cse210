@@ -1,0 +1,98 @@
+DataManager:
+  Responsibilities:
+    - Manage data storage and retrieval.
+    - Handle loading and saving of game progress.
+    - Provide access to scripture and reference data.
+  Methods:
+    - LoadData(): Loads data from storage, including scriptures, references, and game progress.
+    - SaveData(): Saves game progress and other relevant data to storage.
+    - GetScriptures(): Retrieves scriptures from storage for use in the game.
+    - GetReferences(): Retrieves references from storage for use in the game.
+    - UpdateGameProgress(): Updates game progress data, including scores, levels, and achievements.
+  Attributes:
+    - List of scriptures: Stores scriptures available for use in the game.
+    - List of references: Stores references corresponding to scriptures.
+    - Game progress data: Tracks the player's progress, scores, and achievements.
+
+GameMode (Abstract class):
+  Responsibilities:
+    - Define the structure for different game modes.
+  Methods (to be overridden by subclasses):
+    - StartGame(): Initializes the game mode and prepares it for gameplay.
+    - DisplayQuestion(): Displays a question to the player.
+    - CheckAnswer(): Checks the player's answer for correctness.
+
+Quiz (Inherits from GameMode):
+  Responsibilities:
+    - Implement the game logic for the quiz mode.
+    - Provide multiple-choice questions based on scripture references.
+    - Display questions and options to the user.
+    - Evaluate user responses.
+  Methods:
+    - StartGame(): Initializes the quiz mode and starts the quiz session.
+    - DisplayQuestion(): Displays a multiple-choice question to the player.
+    - EvaluateResponse(): Checks the player's response to the question.
+    - GenerateQuizQuestions(): Generates quiz questions dynamically based on game settings and difficulty level.
+  Attributes:
+    - List of quiz questions: Stores generated quiz questions.
+    - List of user responses: Tracks the player's responses to quiz questions.
+    - Difficulty level: Specifies the difficulty level of the quiz.
+    - Number of multiple-choice options: Specifies the number of options for each quiz question.
+
+SeminaryMode (Inherits from GameMode):
+  Responsibilities:
+    - Implement the game logic for the seminary mode.
+    - Present scriptures and questions relevant to the seminary curriculum.
+    - Present partially obscured scriptures for the user to complete.
+  Methods:
+    - StartGame(): Initializes the seminary mode and starts the session.
+    - ObscureScripture(): Partially obscures scriptures for the player to complete.
+    - GenerateSeminaryQuestions(): Generates seminary-related questions dynamically.
+  Attributes:
+    - Difficulty level: Specifies the difficulty level of the seminary mode.
+    - Obscuration level: Specifies the level of obscuration applied to scriptures.
+
+MissionaryMode (Inherits from GameMode):
+  Responsibilities:
+    - Implement the game logic tailored for missionary training.
+    - Present questions and scenarios relevant to missionary work.
+  Methods:
+    - StartGame(): Initializes the missionary mode and starts the session.
+    - PresentScenario(): Presents missionary scenarios and questions to the player.
+    - GenerateMissionaryQuestions(): Generates missionary-related questions dynamically.
+  Attributes:
+    - Difficulty level: Specifies the difficulty level of the missionary mode.
+    - List of Preach My Gospel (PMG) scenarios: Stores scenarios and questions specific to Preach My Gospel.
+
+Scripture:
+  Responsibilities:
+    - Represent individual scriptures.
+    - Store scripture text and reference.
+  Attributes:
+    - Text: Stores the text of the scripture.
+    - Reference (book, chapter, verse): Stores the reference details of the scripture.
+
+Reference:
+  Responsibilities:
+    - Represent scripture references.
+    - Store reference details.
+  Methods:
+    - GetReference(): Retrieves the reference details of the scripture.
+  Attributes:
+    - Book: Stores the name of the book containing the scripture.
+    - Chapter: Stores the chapter number of the scripture.
+    - Verse: Stores the verse number of the scripture.
+
+Word:
+  Responsibilities:
+    - Represent individual words from scriptures.
+    - Store word text and related information.
+  Methods:
+    - Show(): Displays the word to the player.
+    - Hide(): Hides the word from the player.
+    - GetWord(): Retrieves the text of the word.
+    - IsHidden(): Checks if the word is currently hidden.
+  Attributes:
+    - Text: Stores the text of the word.
+    - IsHidden: Indicates whether the word is currently hidden or visible.
+
