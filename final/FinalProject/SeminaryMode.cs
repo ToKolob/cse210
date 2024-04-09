@@ -2,7 +2,7 @@
 //medium mode
 class SeminaryMode:GameMode
 {
-    public SeminaryMode()
+    public SeminaryMode( List<Scripture> scriptures ):base(scriptures)
     {
     }
 }

@@ -1,3 +1,9 @@
+GameSystem:
+  Responsibilities:
+    - Manage the Game Rule
+  Methods:
+    - Run()
+    
 DataManager:
   Responsibilities:
     - Manage data storage and retrieval.

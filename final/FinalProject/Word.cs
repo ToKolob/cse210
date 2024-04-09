@@ -1,6 +1,0 @@
-class Word
-{
-    public Word()
-    {
-    }
-}

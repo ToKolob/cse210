@@ -2,7 +2,8 @@
 //hard mode
 class MissionaryMode:GameMode
 {
-    public MissionaryMode()
+    public MissionaryMode( List<Scripture> scriptures ):base(scriptures)
     {
     }
+
 }

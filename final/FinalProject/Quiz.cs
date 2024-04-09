@@ -2,7 +2,7 @@
 //easy mode
 class Quiz:GameMode
 {
-    public Quiz()
+    public Quiz( List<Scripture> scriptures ):base(scriptures)    
     {
     }
 }
