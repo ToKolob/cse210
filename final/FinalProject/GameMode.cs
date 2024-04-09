@@ -5,6 +5,7 @@ class GameMode
     private int _pointsPerQuestion = 20;
     private int _acumulatePoints = 0;
     private int _rightAnswersCounter = 0;
+    private int _numberOfQuestions = 3;
     private List<Scripture> _scriptures = new List<Scripture>();
     public GameMode(List<Scripture> scriptures)
     {
@@ -85,16 +86,35 @@ Get ready to answer the question!
         Console.WriteLine("Time's up! Answer the question now!");
         // Continue with the rest of your program logic
     }
+    public void LoadAnimation()
+    {
+        Console.WriteLine("");
+        for(int i = 0; i < 3; i++)
+        {
+            Console.Write(".");
+            Thread.Sleep(200);
+            Console.Write(".");
+            Thread.Sleep(200);
+            Console.Write(".");
+            Thread.Sleep(200);
+            Console.Write(".");
+            Thread.Sleep(200);
+            Console.WriteLine(".");
+            Thread.Sleep(200);
+        }
+        Console.Clear();
+        
+    }
         public virtual void DisplayQuestion()
     {
         //will be 1 question with the words of the scripture and 5 options of references
         List<Scripture> RandonScriptures = new List<Scripture>();
         Random random = new Random();
-        if (GetScriptures().Count > 5)
+        if (GetScriptures().Count > GetNumberOfQuestions())
         {
-            // Gerar 5 índices aleatórios únicos
+            // Gerar GetNumberOfQuestions()) índices aleatórios únicos
             HashSet<int> randonIndex = new HashSet<int>();
-            while (randonIndex.Count < 5)
+            while (randonIndex.Count < GetNumberOfQuestions())
             {
                 randonIndex.Add(random.Next(GetScriptures().Count));
             }
@@ -106,7 +126,7 @@ Get ready to answer the question!
         }
         else
         {
-            Console.WriteLine("Not enough scriptures to generate 5 random scriptures");            
+            Console.WriteLine("Not enough scriptures to generate random scriptures");            
         }
         // Select a random scripture
         Scripture randomScripture = RandonScriptures[random.Next(RandonScriptures.Count)];
@@ -118,7 +138,7 @@ Get ready to answer the question!
         // Display the options
         Console.WriteLine("Which of the following references are: ");
         Console.WriteLine("");
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < GetNumberOfQuestions(); i++)
         {
             Console.WriteLine((i + 1) + ". " + RandonScriptures[i].GetReference().GetReference());
         }
@@ -146,6 +166,11 @@ Get ready to answer the question!
         return _pointsPerQuestion;
     }
 
+    public void SetPointsPerQuestion(int pointsPerQuestion)
+    {
+        _pointsPerQuestion = pointsPerQuestion;
+    }
+
     public List<Scripture> GetScriptures()
     {
         return _scriptures;
@@ -169,4 +194,13 @@ Get ready to answer the question!
     {
         _rightAnswersCounter++;
     }
+    public void SetNumberOfQuestions(int numberOfQuestions)
+    {
+        _numberOfQuestions = numberOfQuestions;
+    }
+    public int GetNumberOfQuestions()
+    {
+        return _numberOfQuestions;
+    }
+
 }

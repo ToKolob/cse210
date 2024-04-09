@@ -47,7 +47,7 @@ class DataManager
                     words += parts2[i] + " ";
                 }
 
-                _scriptures.Add(new Scripture(new Reference(type, source, book, chapter, startVerse, endVerse), words));
+                _scriptures.Add(new Scripture(new Reference(type, source, book, chapter, startVerse, endVerse), RemoveNumber(words)));
             }
         }
     }
@@ -93,6 +93,18 @@ class DataManager
             }
         }
         return filteredScriptures;
+    }
+    private string RemoveNumber(string text)
+    {
+        string newText = "";
+        foreach (char c in text)
+        {
+            if (!char.IsNumber(c))
+            {
+                newText += c;
+            }
+        }
+        return newText;
     }
 
 }

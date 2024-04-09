@@ -32,20 +32,43 @@ class GameSystem
             switch (input)
             {
                 case "1":
+                    //Select a random source for the quiz
+                    Random random = new Random();
+                    int index = random.Next(4);
+                    string source = "";
+                    switch (index)
+                    {
+                        case 0:
+                            source = "New Testament";
+                            break;
+                        case 1:
+                            source = "Pearl of Great Price";
+                            break;
+                        case 2:
+                            source = "Old Testament";
+                            break;
+                        case 3:
+                            source = "Book of Mormon";
+                            break;
+                    }
+                    List<Scripture> scripturesFromRandonSource = data.GetFilteredScriptures("Seminary", source);
+
                     Console.Clear();
-                    Quiz quiz = new Quiz(data.GetFilteredScriptures("Seminary", "Pearl of Great Price"));
+                    Quiz quiz = new Quiz(scripturesFromRandonSource, source);
                     quiz.StartGame();
                     _points += quiz.GetAcumulatePoints();
                     break;
                 case "2":
                     Console.Clear();
-                    SeminaryMode seminary = new SeminaryMode( data.GetScriptures());
+                    SeminaryMode seminary = new SeminaryMode( data.GetFilteredScriptures("Seminary"));
                     seminary.StartGame();
+                    _points += seminary.GetAcumulatePoints();
                     break;
                 case "3":
                     Console.Clear();
                     MissionaryMode missionary = new MissionaryMode(data.GetScriptures());
                     missionary.StartGame();
+                    _points += missionary.GetAcumulatePoints();
                     break;
                 case "4":
                     Console.Clear();
